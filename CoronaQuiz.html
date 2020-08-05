@@ -1,0 +1,262 @@
+<html>
+
+  <head>
+    <title>Corona Quiz</title>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        #header {
+          background-color: #3700B3;
+        }
+
+        #content {
+          background-color: #303030;
+        }
+
+        #questionText,
+        #scoreText {
+          color: white;
+        }
+
+        #progress {
+          background-color: #303030;
+        }
+
+        body {
+          background-color: #121212;
+        }
+
+        .awnsers {
+          background-color: #3700B3;
+        }
+
+        .awnserText {
+          color: white;
+        }
+      }
+
+      @media (prefers-color-scheme: light) {
+        #header {
+          background-color: #3700B3;
+        }
+
+        #content {
+          background-color: #6200EE;
+        }
+
+        #questionText,
+        #scoreText {
+          color: white;
+        }
+        #progress {
+          background-color: #6200EE;
+        }
+
+        body {
+          background-color: #FFFFFF;
+        }
+
+        .awnsers {
+          background-color: #3700B3;
+        }
+
+        .awnserText {
+          color: white;
+        }
+      }
+
+      body {
+        margin: 0;
+      }
+
+      #header {
+        height: 10vh;
+        width: 100%;
+        vertical-align: middle;
+      }
+
+      #content {
+        position: relative;
+        height: 65vh;
+        margin: 10vh 10vw 10vh;
+        padding: 2vh 2vw 2vh;
+      }
+
+      #headerText {
+        display: inline-block;
+        overflow: hidden;
+        float: right;
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        font-size: 3vh;
+      }
+
+      #questionText,
+      #scoreText {
+        font-family: 'Roboto', sans-serif;
+        font-size: 4vh;
+      }
+
+      #statsText {
+        font-family: 'Roboto', sans-serif;
+        font-size: 3vh;
+        color: white;
+      }
+
+      #progress {
+        width: 50vw;
+        float: left;
+      }
+
+      #progressBar {
+        width: 1%;
+        height: 10vh;
+        background-color: rgb(10, 200, 10);
+      }
+
+      #headerLeft {
+        width: 46vw;
+        overflow: hidden;
+        padding: 0vh 2vw 0vh;
+      }
+
+      #awnsers {
+        position: absolute;
+        bottom: 2vh;
+        left: 2vw;
+        width: 76vw;
+      }
+
+      .awnsers {
+        padding: 0.5vh 0.5vw 0.5vh;
+        margin: 1vh 0vw 1vh;
+      }
+
+      #awnser1:hover,
+      #awnser2:hover,
+      #awnser3:hover,
+      #awnser4:hover {
+        background-color: #260080;
+      }
+
+      .awnserText {
+        font-family: 'Roboto', sans-serif;
+        font-size: 2.5vh;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div id="header">
+      <div id="progress">
+        <div id="progressBar" style="width: 0%;"></div>
+      </div>
+      <div id="headerLeft">
+        <p id="headerText"></p>
+      </div>
+    </div>
+    <div id="content">
+      <p id="questionText">Test vraag nummer 1</p>
+      <div id="awnsers">
+        <div class="awnsers" id="awnser1" onclick="awnser(1)">
+          <p class="awnserText" id="awnserText1">Goede antwoord</p>
+        </div>
+        <div class="awnsers" id="awnser2" onclick="awnser(2)">
+          <p class="awnserText" id="awnserText2">foute antwoord</p>
+        </div>
+        <div class="awnsers" id="awnser3" onclick="awnser(3)">
+          <p class="awnserText" id="awnserText3">foute antwoord</p>
+        </div>
+        <div class="awnsers" id="awnser4" onclick="awnser(4)">
+          <p class="awnserText" id="awnserText4">foute antwoord</p>
+        </div>
+      </div>
+      <p id="scoreText"></p>
+      <p id="statsText"></p>
+    </div>
+    <script>
+      const questions = ["Hoeveel afstand moet je in Nederland houden?", "Wat is GEEN COVID-19 symptoom?", "Waar was de eerste COVID-19 besmetting?", "Hoe oud is de oudste persoon die COVID-19 heeft overleeft?", "Wat is de boete voor geen mondkapje dragen in het openbaar vervoer?", "Wanneer was de eerst COVID-19 besmetting?", "Hoeveel afstand wordt er in het Verenigd Koninkrijk gehouden?", "Waar zijn de meeste COVID-19 besmettingen?"];
+      const goodAwnsers = ["2", "3", "1", "4", "3", "1", "3", "2"];
+      const awnser1 = ["1 meter", "Koorts", "Wuhan", "111", "85", "December 2019", "1 meter", "Nederland"];
+      const awnser2 = ["1,5 meter", "Kortademigheid", "Dongguan", "99", "90", "Januari 2020", "1,5 meter", "Verenigde Staten"];
+      const awnser3 = ["2 meter", "Haarverlies", "Tokyo", "113", "95", "Februari 2020", "2 meter", "China"];
+      const awnser4 = ["2,5 meter", "Diaree", "Addis Ababa", "107", "100", "Maart 2020", "2,5 meter", "Italië"];
+
+      let correctAwnsers = 0;
+      let wrongAwnsers = [];
+      let selectedQuestion = 0;
+      let questionAwnsered = false;
+      const awnserText1 = document.getElementById("awnserText1");
+      const awnserText2 = document.getElementById("awnserText2");
+      const awnserText3 = document.getElementById("awnserText3");
+      const awnserText4 = document.getElementById("awnserText4");
+      const progressBar = document.getElementById("progressBar");
+      const questionText = document.getElementById("questionText");
+      const headerText = document.getElementById("headerText");
+      awnserText1.innerHTML = awnser1[selectedQuestion];
+      awnserText2.innerHTML = awnser2[selectedQuestion];
+      awnserText3.innerHTML = awnser3[selectedQuestion];
+      awnserText4.innerHTML = awnser4[selectedQuestion];
+      questionText.innerHTML = questions[selectedQuestion];
+      progressBar.style.width = "0%";
+      headerText.innerHTML = "Vraag " + (selectedQuestion + 1) + "/" + questions.length;
+
+      function awnser(i) {
+        if (questionAwnsered == false) {
+          const awnserBox = document.getElementById("awnser" + i);
+          if (goodAwnsers[selectedQuestion] == i) {
+            awnserBox.style.backgroundColor = "rgb(10, 200, 10)";
+            correctAwnsers++;
+            questionAwnsered = true
+            setTimeout(function() {
+              awnserBox.removeAttribute("style")
+              nextQuestion();
+            }, 1000);
+          } else {
+            awnserBox.style.backgroundColor = "rgb(200, 10, 10)";
+            wrongAwnsers.push(questions[selectedQuestion]);
+            questionAwnsered = true;
+            setTimeout(function() {
+              awnserBox.removeAttribute("style")
+              nextQuestion();
+            }, 1000);
+          }
+        }
+      }
+
+      function nextQuestion() {
+        selectedQuestion++;
+        if (selectedQuestion < questions.length) {
+          questionAwnsered = false;
+          headerText.innerHTML = "Vraag " + (selectedQuestion + 1) + "/" + questions.length;
+          progressBar.style.width = 100 / selectedQuestion * correctAwnsers + "%";
+          questionText.innerHTML = questions[selectedQuestion];
+          awnserText1.innerHTML = awnser1[selectedQuestion];
+          awnserText2.innerHTML = awnser2[selectedQuestion];
+          awnserText3.innerHTML = awnser3[selectedQuestion];
+          awnserText4.innerHTML = awnser4[selectedQuestion];
+        } else {
+          headerText.innerHTML = "Einde"
+          document.querySelector("#questionText").style.display = "none";
+          document.querySelector("#awnser1").style.display = "none";
+          document.querySelector("#awnser2").style.display = "none";
+          document.querySelector("#awnser3").style.display = "none";
+          document.querySelector("#awnser4").style.display = "none";
+          showEndScreen()
+        }
+      }
+
+      function showEndScreen() {
+        if (100 / questions.length * correctAwnsers > 55) {
+          document.getElementById("scoreText").innerHTML = "gefeliciteerd, je hebt " + (100 / questions.length * correctAwnsers) + "% van de vragen goed.";
+          	document.getElementById("statsText").innerHTML = "vragen fout: <br>"+ "<br>" + wrongAwnsers.join("<br>");
+        } else {
+          document.getElementById("scoreText").innerHTML = "Helaas, je hebt " + (100 / questions.length * correctAwnsers) + "% van de vragen goed.";
+          document.getElementById("statsText").innerHTML = "vragen fout: <br>" + "<br>" + wrongAwnsers.join("<br>");
+        }
+      }
+
+    </script>
+  </body>
+
+</html>
