@@ -1,0 +1,139 @@
+@media (prefers-color-scheme: dark) {
+        #header {
+          background-color: #3700B3;
+        }
+
+        #content {
+          background-color: #303030;
+        }
+
+        #questionText,
+        #scoreText {
+          color: white;
+        }
+
+        #progress {
+          background-color: #303030;
+        }
+
+        body {
+          background-color: #121212;
+        }
+
+        .awnsers {
+          background-color: #3700B3;
+        }
+
+        .awnserText {
+          color: white;
+        }
+      }
+
+      @media (prefers-color-scheme: light) {
+        #header {
+          background-color: #3700B3;
+        }
+
+        #content {
+          background-color: #6200EE;
+        }
+
+        #questionText,
+        #scoreText {
+          color: white;
+        }
+        #progress {
+          background-color: #6200EE;
+        }
+
+        body {
+          background-color: #FFFFFF;
+        }
+
+        .awnsers {
+          background-color: #3700B3;
+        }
+
+        .awnserText {
+          color: white;
+        }
+      }
+
+      body {
+        margin: 0;
+      }
+
+      #header {
+        height: 10vh;
+        width: 100%;
+        vertical-align: middle;
+      }
+
+      #content {
+        position: relative;
+        height: 65vh;
+        margin: 10vh 10vw 10vh;
+        padding: 2vh 2vw 2vh;
+      }
+
+      #headerText {
+        display: inline-block;
+        overflow: hidden;
+        float: right;
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        font-size: 3vh;
+      }
+
+      #questionText,
+      #scoreText {
+        font-family: 'Roboto', sans-serif;
+        font-size: 4vh;
+      }
+
+      #statsText {
+        font-family: 'Roboto', sans-serif;
+        font-size: 3vh;
+        color: white;
+      }
+
+      #progress {
+        width: 50vw;
+        float: left;
+      }
+
+      #progressBar {
+        width: 1%;
+        height: 10vh;
+        background-color: rgb(10, 200, 10);
+      }
+
+      #headerLeft {
+        width: 46vw;
+        overflow: hidden;
+        padding: 0vh 2vw 0vh;
+      }
+
+      #awnsers {
+        position: absolute;
+        bottom: 2vh;
+        left: 2vw;
+        width: 76vw;
+      }
+
+      .awnsers {
+        padding: 0.5vh 0.5vw 0.5vh;
+        margin: 1vh 0vw 1vh;
+      }
+
+      #awnser1:hover,
+      #awnser2:hover,
+      #awnser3:hover,
+      #awnser4:hover {
+        background-color: #260080;
+      }
+
+      .awnserText {
+        font-family: 'Roboto', sans-serif;
+        font-size: 2.5vh;
+      }
