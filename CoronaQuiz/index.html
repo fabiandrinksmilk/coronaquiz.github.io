@@ -1,0 +1,39 @@
+<html>
+
+  <head>
+    <title>Corona Quiz</title>
+    <link rel="stylesheet" type="text/css" href="CoronaQuiz.css">
+  </head>
+
+  <body>
+    <div id="header">
+      <div id="progress">
+        <div id="progressBar" style="width: 0%;"></div>
+      </div>
+      <div id="headerLeft">
+        <p id="headerText"></p>
+      </div>
+    </div>
+    <div id="content">
+      <p id="questionText">Test vraag nummer 1</p>
+      <div id="awnsers">
+        <div class="awnsers" id="awnser1" onclick="awnser(1)">
+          <p class="awnserText" id="awnserText1">Goede antwoord</p>
+        </div>
+        <div class="awnsers" id="awnser2" onclick="awnser(2)">
+          <p class="awnserText" id="awnserText2">foute antwoord</p>
+        </div>
+        <div class="awnsers" id="awnser3" onclick="awnser(3)">
+          <p class="awnserText" id="awnserText3">foute antwoord</p>
+        </div>
+        <div class="awnsers" id="awnser4" onclick="awnser(4)">
+          <p class="awnserText" id="awnserText4">foute antwoord</p>
+        </div>
+      </div>
+      <p id="scoreText"></p>
+      <p id="statsText"></p>
+    </div>
+    <script src="CoronaQuiz.js"></script>
+  </body>
+
+</html>
