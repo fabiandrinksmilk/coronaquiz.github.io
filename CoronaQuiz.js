@@ -1,3 +1,8 @@
+if ("serviceWorker" in navigator) {
+  // register service worker
+  navigator.serviceWorker.register("service-worker.js");
+}
+
 const questions = ["Hoeveel afstand moet je in Nederland houden?", "Wat is GEEN COVID-19 symptoom?", "Waar was de eerste COVID-19 besmetting?", "Hoe oud is de oudste persoon die COVID-19 heeft overleeft?", "Wat is de boete voor geen mondkapje dragen in het openbaar vervoer?", "Wanneer was de eerst COVID-19 besmetting?", "Hoeveel afstand wordt er in het Verenigd Koninkrijk gehouden?", "Waar zijn de meeste COVID-19 besmettingen?"];
       const goodAwnsers = ["2", "3", "1", "4", "3", "1", "3", "2"];
       const awnser1 = ["1 meter", "Koorts", "Wuhan", "111", "85", "December 2019", "1 meter", "Nederland"];
