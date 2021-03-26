@@ -37,11 +37,19 @@
     <link rel="apple-touch-startup-image" href="icons/apple-splash-640-1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
     <link rel="apple-touch-startup-image" href="icons/apple-splash-1136-640.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
     <script>
-      
-      import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
-      
-      const el = document.createElement('pwa-update');
-      document.body.appendChild(el);
+    // This is the "Offline page" service worker
+
+// Add this below content to your HTML page inside a <script type="module">
+
+/*
+This code uses the pwa-update web component https://github.com/pwa-builder/pwa-update to register your service worker,
+tell the user when there is an update available and let the user know when your PWA is ready to use offline.
+*/
+
+import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+
+const el = document.createElement('pwa-update');
+document.body.appendChild(el);
       </script>
   </head>
 
